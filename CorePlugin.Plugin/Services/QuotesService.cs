@@ -20,7 +20,7 @@ public class QuotesService
         return await _db.Quotes.Skip(random.Next(count)).FirstAsync();
     }
 
-    public async Task<Quote> AddQuote(QuoteDto quoteDto, Guid userId, string username)
+    public async Task<Quote> AddQuoteAsync(QuoteDto quoteDto, Guid userId, string username)
     {
         var quoteAlreadyExists = _db.Quotes.Any(x => x.QuoteText == quoteDto.QuoteText.Trim());
         if (quoteAlreadyExists)

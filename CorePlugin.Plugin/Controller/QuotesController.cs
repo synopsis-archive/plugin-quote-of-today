@@ -1,7 +1,9 @@
+using Core.AuthLib;
 using CorePlugin.QuoteDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PluginPolls.PollsDb.Dtos;
+using PluginPolls.PollsDb.Exceptions;
 using PluginPolls.PollsDb.Services;
 
 namespace PluginPolls.PollsDb.Controller;
@@ -18,13 +20,27 @@ public class QuotesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<Quote>> GetRandomQuote()
     {
-        throw new NotImplementedException();
+        try
+        {
+            return await _dbService.GetRandomQuoteAsync();
+        }
+        catch (QuoteException e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [Authorize]
     [HttpPost]
     public async Task<ActionResult<Quote>> AddQuoteToDb([FromBody] QuoteDto quoteDto)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return await _dbService.AddQuoteAsync(quoteDto, User.GetUUID(), User.GetUsername());
+        }
+        catch (QuoteException e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 }
