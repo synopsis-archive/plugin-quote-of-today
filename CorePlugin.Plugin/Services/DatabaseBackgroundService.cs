@@ -18,7 +18,7 @@ public class DatabaseBackgroundService : BackgroundService
             var dbContext = scope.ServiceProvider.GetRequiredService<QuotesContext>();
             dbContext.Database.EnsureCreated();
             Console.WriteLine("Database OK!");
-            Console.WriteLine($"Database includes a total of {dbContext.Quotes.Count()} polls");
+            Console.WriteLine($"Database includes a total of {dbContext.Quotes.Count()} quotes.");
         }, stoppingToken);
     }
 }
