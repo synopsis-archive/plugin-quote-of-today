@@ -8,16 +8,22 @@ namespace PluginPolls.PollsDb.Services;
 public class QuotesService
 {
     private readonly QuotesContext _db;
+    private readonly Dictionary<DateTime, Quote> _quotesOfDays = new();
 
     public QuotesService(QuotesContext db) => _db = db;
 
     public async Task<Quote> GetRandomQuoteAsync()
     {
         var random = new Random();
-        var count = await _db.Quotes.Where(x => x.SubmitTime.Date == DateTime.Now.Date).CountAsync();
+        var count = await _db.Quotes.CountAsync();
         if (count < 1)
             throw new NoQuotePresentException("No quotes present in the database");
-        return await _db.Quotes.Skip(random.Next(count)).FirstAsync();
+        if (_quotesOfDays.ContainsKey(DateTime.Now.Date))
+            return _quotesOfDays[DateTime.Now.Date];
+
+        var newQuoteOfToday = await _db.Quotes.Skip(random.Next(count)).FirstAsync();
+        _quotesOfDays.Add(DateTime.Now.Date, newQuoteOfToday);
+        return newQuoteOfToday;
     }
 
     public async Task<Quote> AddQuoteAsync(QuoteDto quoteDto, Guid userId, string username)
