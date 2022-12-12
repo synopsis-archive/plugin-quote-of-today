@@ -14,7 +14,7 @@ public class QuotesService
     public async Task<Quote> GetRandomQuoteAsync()
     {
         var random = new Random();
-        var count = await _db.Quotes.CountAsync();
+        var count = await _db.Quotes.Where(x => x.SubmitTime.Date == DateTime.Now.Date).CountAsync();
         if (count < 1)
             throw new NoQuotePresentException("No quotes present in the database");
         return await _db.Quotes.Skip(random.Next(count)).FirstAsync();

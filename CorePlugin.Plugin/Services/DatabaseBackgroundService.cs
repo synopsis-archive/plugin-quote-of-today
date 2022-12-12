@@ -10,15 +10,10 @@ public class DatabaseBackgroundService : BackgroundService
 
     public DatabaseBackgroundService(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        return Task.Run(() =>
-        {
-            using var scope = _serviceProvider.CreateScope();
-            var dbContext = scope.ServiceProvider.GetRequiredService<QuotesContext>();
-            dbContext.Database.EnsureCreated();
-            Console.WriteLine("Database OK!");
-            Console.WriteLine($"Database includes a total of {dbContext.Quotes.Count()} quotes.");
-        }, stoppingToken);
+        using var scope = _serviceProvider.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<QuotesContext>();
+        await dbContext.Database.EnsureCreatedAsync(stoppingToken);
     }
 }
