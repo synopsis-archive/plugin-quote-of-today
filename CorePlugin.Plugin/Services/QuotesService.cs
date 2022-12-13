@@ -14,13 +14,13 @@ public class QuotesService
 
     public async Task<Quote> GetRandomQuoteAsync()
     {
+        if (_quotesOfDays.ContainsKey(DateTime.Now.Date))
+            return _quotesOfDays[DateTime.Now.Date];
+
         var random = new Random();
         var count = await _db.Quotes.CountAsync();
         if (count < 1)
             throw new NoQuotePresentException("No quotes present in the database");
-        if (_quotesOfDays.ContainsKey(DateTime.Now.Date))
-            return _quotesOfDays[DateTime.Now.Date];
-
         var newQuoteOfToday = await _db.Quotes.Skip(random.Next(count)).FirstAsync();
         _quotesOfDays.Add(DateTime.Now.Date, newQuoteOfToday);
         return newQuoteOfToday;
