@@ -16,7 +16,6 @@ public class QuotesController : ControllerBase
 
     public QuotesController(QuotesService service) => _dbService = service;
 
-    [Authorize]
     [HttpGet]
     public async Task<ActionResult<Quote>> GetRandomQuote()
     {
