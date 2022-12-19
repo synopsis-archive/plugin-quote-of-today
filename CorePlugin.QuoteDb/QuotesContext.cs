@@ -32,7 +32,7 @@ public class QuotesContext : DbContext
                     SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
                     SubmittedBy = "Loata",
                     SubmitTime = DateTime.Now
-                }
+                },
                 new Quote
                 {
                     QuoteId = 3,
