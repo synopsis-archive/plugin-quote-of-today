@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+/* eslint-env es6 */
+/* eslint-disable no-console */
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
