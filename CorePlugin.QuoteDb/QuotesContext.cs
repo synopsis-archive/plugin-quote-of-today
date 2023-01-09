@@ -48,6 +48,46 @@ public class QuotesContext : DbContext
                     SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
                     SubmittedBy = "Andi",
                     SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 5,
+                    QuoteText = "Segt ma scho wos?",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 6,
+                    QuoteText = "Pfeift!",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 7,
+                    QuoteText = "Simon is wie a MongoDB nur ohne DB...",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Unknown",
+                    SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 8,
+                    QuoteText = "Wos soi ma bei am Interview ned Hobn? \n Andi ~ NOT have Gum.",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Andi",
+                    SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 9,
+                    QuoteText = "Als Schüler ist es mir ein Anliegen, so oft wie möglich in SYP abwesend zu sein.",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "V. Kellermair",
+                    SubmitTime = new DateTime(2021, 12, 1)
                 }
             );
         }
