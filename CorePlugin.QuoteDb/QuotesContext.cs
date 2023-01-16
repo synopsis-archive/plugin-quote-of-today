@@ -88,6 +88,30 @@ public class QuotesContext : DbContext
                     SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
                     SubmittedBy = "V. Kellermair",
                     SubmitTime = new DateTime(2021, 12, 1)
+                },
+                new Quote
+                {
+                    QuoteId = 10,
+                    QuoteText = "Mir is liaba i überleb und es is schiach, ois wie i stirb und es wa sche gwen",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = new DateTime(2023, 1, 12)
+                },
+                new Quote
+                {
+                    QuoteId = 11,
+                    QuoteText = "Des is a schena Mechanismus, des hüft beim Fehler mochn.",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = new DateTime(2023, 1, 12)
+                },
+                new Quote
+                {
+                    QuoteId = 11,
+                    QuoteText = "Jojo des typisch Österreichisch. Fongt Deitsch au und heat Italienisch auf",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = new DateTime(2023, 1, 12)
                 }
             );
         }
