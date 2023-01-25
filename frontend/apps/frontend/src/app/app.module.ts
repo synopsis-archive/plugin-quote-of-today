@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, CommonModule],
+  // use environment.backend as reference to the backend URL
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PluginPolls.PollsDb.Services;
 
-namespace PluginPolls.PollsDb;
+namespace CorePlugin.Plugin;
 
 public class Plugin : ICorePlugin
 {

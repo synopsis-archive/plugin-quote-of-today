@@ -1,5 +1,5 @@
 using Core.AuthLib;
-using PluginPolls.PollsDb;
+using CorePlugin.Plugin;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +35,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.UseHttpsRedirection();
-
+app.UseRouting();
 app.UseAuthorization();
 
 plugin.Configure(app);
