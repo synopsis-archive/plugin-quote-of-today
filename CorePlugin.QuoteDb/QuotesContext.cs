@@ -116,7 +116,7 @@ public class QuotesContext : DbContext
                 new Quote
                 {
                     QuoteId = 13,
-                    QuoteText = "Willkomment in meiner Welt!",
+                    QuoteText = "Willkommen in meiner Welt!",
                     SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
                     SubmittedBy = "Prof. Doppler",
                     SubmitTime = new DateTime(2023, 1, 27)
