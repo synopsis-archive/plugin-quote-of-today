@@ -4,7 +4,7 @@ namespace CorePlugin.QuoteDb;
 
 public class QuotesContext : DbContext
 {
-    public QuotesContext(DbContextOptions options) : base(options) { }
+    public QuotesContext(DbContextOptions<QuotesContext> options) : base(options) { }
 
     public DbSet<Quote> Quotes { get; set; } = null!;
 
@@ -48,6 +48,78 @@ public class QuotesContext : DbContext
                     SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
                     SubmittedBy = "Andi",
                     SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 5,
+                    QuoteText = "Segt ma scho wos?",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 6,
+                    QuoteText = "Pfeift!",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 7,
+                    QuoteText = "Simon is wie a MongoDB nur ohne DB...",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Unknown",
+                    SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 8,
+                    QuoteText = "Wos soi ma bei am Interview ned Hobn? \n Andi ~ NOT have Gum.",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Andi",
+                    SubmitTime = DateTime.Now
+                },
+                new Quote
+                {
+                    QuoteId = 9,
+                    QuoteText = "Als Schüler ist es mir ein Anliegen, so oft wie möglich in SYP abwesend zu sein.",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "V. Kellermair",
+                    SubmitTime = new DateTime(2021, 12, 1)
+                },
+                new Quote
+                {
+                    QuoteId = 10,
+                    QuoteText = "Mir is liaba i überleb und es is schiach, ois wie i stirb und es wa sche gwen",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = new DateTime(2023, 1, 12)
+                },
+                new Quote
+                {
+                    QuoteId = 11,
+                    QuoteText = "Des is a schena Mechanismus, des hüft beim Fehler mochn.",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = new DateTime(2023, 1, 12)
+                },
+                new Quote
+                {
+                    QuoteId = 11,
+                    QuoteText = "Jojo des typisch Österreichisch. Fongt Deitsch au und heat Italienisch auf",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Grüneis",
+                    SubmitTime = new DateTime(2023, 1, 12)
+                },
+                new Quote
+                {
+                    QuoteId = 12,
+                    QuoteText = "Willkomment in meiner Welt!",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Doppler",
+                    SubmitTime = new DateTime(2023, 1, 27)
                 }
             );
         }
