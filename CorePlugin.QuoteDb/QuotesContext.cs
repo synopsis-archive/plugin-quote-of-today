@@ -4,7 +4,7 @@ namespace CorePlugin.QuoteDb;
 
 public class QuotesContext : DbContext
 {
-    public QuotesContext(DbContextOptions options) : base(options) { }
+    public QuotesContext(DbContextOptions<QuotesContext> options) : base(options) { }
 
     public DbSet<Quote> Quotes { get; set; } = null!;
 
@@ -112,6 +112,14 @@ public class QuotesContext : DbContext
                     SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
                     SubmittedBy = "Prof. Grüneis",
                     SubmitTime = new DateTime(2023, 1, 12)
+                },
+                new Quote
+                {
+                    QuoteId = 12,
+                    QuoteText = "Willkomment in meiner Welt!",
+                    SubmitterUuid = new Guid("00000000-0000-0000-0000-000000000000"),
+                    SubmittedBy = "Prof. Doppler",
+                    SubmitTime = new DateTime(2023, 1, 27)
                 }
             );
         }
