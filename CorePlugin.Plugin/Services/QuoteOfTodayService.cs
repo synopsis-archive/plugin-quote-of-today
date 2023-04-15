@@ -11,7 +11,7 @@ public class QuoteOfTodayService
 
     public bool SetQuoteOfToday(Quote quoteToAdd)
     {
-        if (_quotesOfDays.TryGetValue(DateTime.Today.AddDays(-1), out var quoteOfYesterday) 
+        if (_quotesOfDays.TryGetValue(DateTime.Today.AddDays(-1), out var quoteOfYesterday)
             && quoteOfYesterday != quoteToAdd)
             return false;
 
