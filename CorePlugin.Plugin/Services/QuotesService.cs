@@ -27,8 +27,8 @@ public class QuotesService
         if (count < 1)
             throw new NoQuotePresentException("No quotes present in the database");
 
-        bool quoteOfTodaySet;
-        Quote newQuoteOfToday;
+        var quoteOfTodaySet = false;
+        Quote newQuoteOfToday = null!;
 
         do
         {

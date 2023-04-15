@@ -11,11 +11,9 @@ public class QuoteOfTodayService
 
     public bool SetQuoteOfToday(Quote quoteToAdd)
     {
-        if (_quotesOfDays.TryGetValue(DateTime.Today.AddDays(-1), out var quoteOfYesterday))
-        {
-            if (quoteOfYesterday == quoteToAdd)
-                return false;
-        }
+        if (_quotesOfDays.TryGetValue(DateTime.Today.AddDays(-1), out var quoteOfYesterday) 
+            && quoteOfYesterday != quoteToAdd)
+            return false;
 
         _quotesOfDays.Add(DateTime.Today, quoteToAdd);
         return true;
