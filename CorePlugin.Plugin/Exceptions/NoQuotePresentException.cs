@@ -1,4 +1,4 @@
-namespace PluginPolls.PollsDb.Exceptions;
+namespace CorePlugin.Plugin.Exceptions;
 
 public class NoQuotePresentException : QuoteException
 {

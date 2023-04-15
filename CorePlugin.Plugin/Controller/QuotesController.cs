@@ -1,12 +1,12 @@
 using Core.AuthLib;
+using CorePlugin.Plugin.Dtos;
+using CorePlugin.Plugin.Exceptions;
+using CorePlugin.Plugin.Services;
 using CorePlugin.QuoteDb;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PluginPolls.PollsDb.Dtos;
-using PluginPolls.PollsDb.Exceptions;
-using PluginPolls.PollsDb.Services;
 
-namespace PluginPolls.PollsDb.Controller;
+namespace CorePlugin.Plugin.Controller;
 
 [ApiController]
 [Route("[controller]")]

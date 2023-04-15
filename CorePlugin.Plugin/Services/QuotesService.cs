@@ -1,28 +1,41 @@
+using CorePlugin.Plugin.Dtos;
+using CorePlugin.Plugin.Exceptions;
 using CorePlugin.QuoteDb;
 using Microsoft.EntityFrameworkCore;
-using PluginPolls.PollsDb.Dtos;
-using PluginPolls.PollsDb.Exceptions;
 
-namespace PluginPolls.PollsDb.Services;
+namespace CorePlugin.Plugin.Services;
 
 public class QuotesService
 {
     private readonly QuotesContext _db;
-    private readonly Dictionary<DateTime, Quote> _quotesOfDays = new();
+    private readonly QuoteOfTodayService _quoteOfTodayService;
 
-    public QuotesService(QuotesContext db) => _db = db;
+    public QuotesService(QuotesContext db, QuoteOfTodayService quoteOfTodayService)
+    {
+        _db = db;
+        _quoteOfTodayService = quoteOfTodayService;
+    }
 
     public async Task<Quote> GetRandomQuoteAsync()
     {
-        if (_quotesOfDays.ContainsKey(DateTime.Now.Date))
-            return _quotesOfDays[DateTime.Now.Date];
+        var quoteOfToday = _quoteOfTodayService.GetQuoteOfToday();
+        if (quoteOfToday != null)
+            return quoteOfToday;
 
         var random = new Random();
         var count = await _db.Quotes.CountAsync();
         if (count < 1)
             throw new NoQuotePresentException("No quotes present in the database");
-        var newQuoteOfToday = await _db.Quotes.Skip(random.Next(count)).FirstAsync();
-        _quotesOfDays.Add(DateTime.Now.Date, newQuoteOfToday);
+
+        bool quoteOfTodaySet;
+        Quote newQuoteOfToday;
+
+        do
+        {
+            newQuoteOfToday = await _db.Quotes.Skip(random.Next(count - 1)).FirstAsync();
+            quoteOfTodaySet = _quoteOfTodayService.SetQuoteOfToday(newQuoteOfToday);
+        } while (!quoteOfTodaySet);
+
         return newQuoteOfToday;
     }
 
