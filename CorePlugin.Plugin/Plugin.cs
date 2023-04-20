@@ -16,7 +16,7 @@ public class Plugin : ICorePlugin
     {
         builder.Services.AddDbContext<QuotesContext>(db =>
         {
-            var connectionString = builder.Configuration.GetConnectionStringThatAlsoWorksInProduction("PollsDatabaseConnection", builder.Environment.IsDevelopment());
+            var connectionString = builder.Configuration.GetConnectionStringThatAlsoWorksInProduction("QuotesDbConnection", builder.Environment.IsDevelopment());
             if (builder.Environment.IsDevelopment()) {
                 db.UseSqlite(connectionString);
             } else {
