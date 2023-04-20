@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace CorePlugin.Plugin;
 
@@ -15,8 +16,13 @@ public class Plugin : ICorePlugin
         builder.Services.AddDbContext<QuotesContext>(db =>
         {
             var connectionString = builder.Configuration.GetConnectionString("QuotesDbConnection");
-            db.UseSqlite(connectionString);
+            if (builder.Environment.IsDevelopment()) {
+                db.UseSqlite(connectionString);
+            } else {
+                db.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            }
         });
+        
         builder.Services.AddSingleton<QuoteOfTodayService>();
         builder.Services.AddScoped<QuotesService>();
         builder.Services.AddHostedService<DatabaseBackgroundService>();
