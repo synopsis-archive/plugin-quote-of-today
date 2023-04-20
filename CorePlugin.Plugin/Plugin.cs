@@ -1,4 +1,5 @@
-﻿using Core.Plugin.Interface;
+using Core.Backend;
+using Core.Plugin.Interface;
 using CorePlugin.Plugin.Services;
 using CorePlugin.QuoteDb;
 using Microsoft.AspNetCore.Builder;
@@ -15,7 +16,7 @@ public class Plugin : ICorePlugin
     {
         builder.Services.AddDbContext<QuotesContext>(db =>
         {
-            var connectionString = builder.Configuration.GetConnectionString("QuotesDbConnection");
+            var connectionString = builder.Configuration.GetConnectionStringThatAlsoWorksInProduction("PollsDatabaseConnection", builder.Environment.IsDevelopment());
             if (builder.Environment.IsDevelopment()) {
                 db.UseSqlite(connectionString);
             } else {
