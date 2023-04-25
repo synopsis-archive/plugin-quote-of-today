@@ -19,7 +19,9 @@ public class Plugin : ICorePlugin
             var connectionString = builder.Configuration.GetConnectionStringThatAlsoWorksInProduction("QuotesDbConnection", builder.Environment.IsDevelopment());
             if (builder.Environment.IsDevelopment()) {
                 db.UseSqlite(connectionString);
-            } else {
+            }
+            else
+            {
                 db.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             }
         });
