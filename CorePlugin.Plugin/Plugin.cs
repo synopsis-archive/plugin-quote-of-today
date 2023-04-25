@@ -17,7 +17,8 @@ public class Plugin : ICorePlugin
         builder.Services.AddDbContext<QuotesContext>(db =>
         {
             var connectionString = builder.Configuration.GetConnectionStringThatAlsoWorksInProduction("QuotesDbConnection", builder.Environment.IsDevelopment());
-            if (builder.Environment.IsDevelopment()) {
+            if (builder.Environment.IsDevelopment())
+            {
                 db.UseSqlite(connectionString);
             }
             else
@@ -25,7 +26,7 @@ public class Plugin : ICorePlugin
                 db.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             }
         });
-        
+
         builder.Services.AddSingleton<QuoteOfTodayService>();
         builder.Services.AddScoped<QuotesService>();
         builder.Services.AddHostedService<DatabaseBackgroundService>();
